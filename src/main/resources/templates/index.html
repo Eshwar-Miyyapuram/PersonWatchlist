@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Person Management</title>
+<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div class="container">
+
+
+<!-- Left Side Form -->
+<div class="form-box">
+<h2>Add Person</h2>
+<form th:action="@{/add}" th:object="${person}" method="post">
+<label>Name</label>
+<input type="text" th:field="*{name}" required />
+
+
+<label>Age</label>
+<input type="number" th:field="*{age}" required />
+
+
+<label>City</label>
+<input type="text" th:field="*{city}" required />
+
+
+<button type="submit">Add</button>
+</form>
+</div>
+
+
+<!-- Right Side Table -->
+<div class="table-box">
+<h2>Person List</h2>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Name</th>
+<th>Age</th>
+<th>City</th>
+</tr>
+</thead>
+<tbody>
+<tr th:each="p : ${persons}">
+<td th:text="${p.id}"></td>
+<td th:text="${p.name}"></td>
+<td th:text="${p.age}"></td>
+<td th:text="${p.city}"></td>
+</tr>
+</tbody>
+</table>
+</div>
+
+
+</div>
+</body>
+</html>
