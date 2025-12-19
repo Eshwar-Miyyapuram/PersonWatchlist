@@ -1,4 +1,3 @@
-version:
 services:
   personapp:
     container_name: personapp
@@ -8,8 +7,10 @@ services:
     ports:
       - "8080:8080"
     depends_on:
-      - persondb
-  persondb:
+      - mysql-db
+    labels:
+      - "Owner=Eshwar"
+  mysql-db:
     container_name: mysql-db
     image: mysql:8.0.33
     environment:
