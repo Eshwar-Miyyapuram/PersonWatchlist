@@ -1,0 +1,20 @@
+version:
+services:
+  personapp:
+    container_name: personapp
+    build:
+      context: ../
+      dockerfile: dockerFiles/APPDOCKER/DockerFile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - persondb
+  persondb:
+    container_name: mysql-db
+    image: mysql:8.0.33
+    environment:
+      MYSQL_ROOT_PASSWORD: DBpassword123
+      MYSQL_DATABASE: persondb
+    labels:
+      - "Project=PersonWatchlist"
+      - "Owner=Eshwar"
