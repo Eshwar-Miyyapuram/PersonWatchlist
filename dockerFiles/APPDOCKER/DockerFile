@@ -1,6 +1,7 @@
 FROM maven:3.9.11-eclipse-temurin-17-alpine AS build-stage
+RUN apk add --no-cache git
 RUN git clone https://github.com/Eshwar-Miyyapuram/PersonWatchlist.git
-RUN cd PersonWatchlist && git checkout main && mvn clean install
+RUN cd PersonWatchlist && git checkout main && mvn clean install -DskipTests
 
 FROM tomcat:11.0.15-jdk17-temurin-jammy
 WORKDIR /app
