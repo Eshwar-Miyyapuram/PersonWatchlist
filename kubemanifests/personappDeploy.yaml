@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: personapp-Deployment
+  labels:
+    app: personapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: personapp
+  template:
+    metadata:
+      labels:
+        app: personapp
+    spec:
+      containers:
+        - name: personapp
+          image: eshwarhub/personapp:v1
+          ports:
+            - name: personapp-port
+              containerPort: 8080

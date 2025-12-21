@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: persondb-Deployment
+  labels:
+    app: persona
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: persondb
+  template:
+    metadata:
+      labels:
+        app: persondb
+    spec:
+      containers:
+        - name: persondb
+          image: eshwarhub/persondb:v1
+          ports:
+            - name: mysql-port
+              containerPort: 3306
